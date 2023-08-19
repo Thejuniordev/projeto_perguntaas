@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_perguntas/responses.dart';
+import 'package:projeto_perguntas/result.dart';
 import './question.dart';
 
 main() {
@@ -53,12 +54,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                       .toList(),
                 ],
               )
-            : const Center(
-                child: Text(
-                  'Parabains!',
-                  style: TextStyle(fontSize: 28),
-                ),
-              ),
+            : const Result(),
       ),
     );
   }
