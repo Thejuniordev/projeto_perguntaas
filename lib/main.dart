@@ -17,9 +17,19 @@ class _PerguntaAppState extends State<PerguntaApp> {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> perguntas = [
-      'Qual é a sua cor favorita?',
-      'Qual é o seu animal favorito?',
+    final perguntas = [
+      {
+        'text': 'Qual é a sua cor favorita?',
+        'reponse': ['black', 'red', 'yellow', 'green'],
+      },
+      {
+        'text': 'Qual é o seu animal favorito',
+        'reponse': ['dog', 'cat', 'bird', 'horse'],
+      },
+      {
+        'text': 'Qual é seu carro favorito',
+        'reponse': ['Dodge', 'Land Rover', 'Ferrari', 'Porshe'],
+      }
     ];
 
     return MaterialApp(
@@ -29,7 +39,8 @@ class _PerguntaAppState extends State<PerguntaApp> {
         ),
         body: Column(
           children: [
-            Question(perguntas[_perguntaSelecionada]),
+            //Question(perguntas[_perguntaSelecionada]['text']), Mudou na versão 3 do flutter
+            Question(perguntas[_perguntaSelecionada]['text'].toString()),
             Responses('Resposta 1', _responder),
             Responses('Resposta 2', _responder),
             Responses('Resposta 3', _responder),
@@ -41,7 +52,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
 }
 
 class PerguntaApp extends StatefulWidget {
-  PerguntaApp({Key? key}) : super(key: key);
+  const PerguntaApp({Key? key}) : super(key: key);
 
   @override
   State<PerguntaApp> createState() {
