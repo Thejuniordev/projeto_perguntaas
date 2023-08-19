@@ -3,7 +3,7 @@ import 'package:projeto_perguntas/responses.dart';
 import './question.dart';
 
 main() {
-  runApp(PerguntaApp());
+  runApp(const PerguntaApp());
 }
 
 class _PerguntaAppState extends State<PerguntaApp> {
@@ -12,7 +12,6 @@ class _PerguntaAppState extends State<PerguntaApp> {
     setState(() {
       _perguntaSelecionada++;
     });
-    print(_perguntaSelecionada);
   }
 
   @override
@@ -32,6 +31,12 @@ class _PerguntaAppState extends State<PerguntaApp> {
       }
     ];
 
+    List<String> responses = perguntas[_perguntaSelecionada].cast()['response'];
+
+    // for (var textResp in responses) {
+    //   widgets.add(Responses(textResp, _responder));
+    // }
+
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -41,9 +46,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
           children: [
             //Question(perguntas[_perguntaSelecionada]['text']), Mudou na versão 3 do flutter
             Question(perguntas[_perguntaSelecionada]['text'].toString()),
-            Responses('Resposta 1', _responder),
-            Responses('Resposta 2', _responder),
-            Responses('Resposta 3', _responder),
+            ...responses.map((text) => Responses(text, _responder)).toList(),
           ],
         ),
       ),
