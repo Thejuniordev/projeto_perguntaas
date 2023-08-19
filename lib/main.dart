@@ -10,16 +10,31 @@ class _PerguntaAppState extends State<PerguntaApp> {
   int _perguntaSelecionada = 0;
   final List<Map<String, Object>> _perguntas = const [
     {
-      'text': 'Qual é a sua cor favorita?',
-      'reponse': ['black', 'red', 'yellow', 'green'],
+      'text': 'Qual dessas tags pertencem ao html?',
+      'reponse': [
+        {'texto': '<grid>', 'nota': 0},
+        {'texto': '<text>', 'nota': 0},
+        {'texto': '<body>', 'nota': 10},
+        {'texto': '<green>', 'nota': 0},
+      ],
     },
     {
-      'text': 'Qual é o seu animal favorito',
-      'reponse': ['dog', 'cat', 'bird', 'horse'],
+      'text': 'Qual é o nome da tag de cabeçalho do html?',
+      'reponse': [
+        {'texto': '<body>', 'nota': 0},
+        {'texto': '<section>', 'nota': 0},
+        {'texto': '<html>', 'nota': 0},
+        {'texto': '<head>', 'nota': 10},
+      ],
     },
     {
-      'text': 'Qual é seu carro favorito',
-      'reponse': ['Dodge', 'Land Rover', 'Ferrari', 'Porshe'],
+      'text': 'Qual dos itens simboliza uma arrow function?',
+      'reponse': [
+        {'texto': '<() == (){}>', 'nota': 0},
+        {'texto': '() => {}', 'nota': 10},
+        {'texto': '{} => ()', 'nota': 0},
+        {'texto': '{() => {}}', 'nota': 0},
+      ],
     }
   ];
   void _responder() {
