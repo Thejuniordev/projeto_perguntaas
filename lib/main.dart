@@ -7,31 +7,37 @@ main() {
 }
 
 class _PerguntaAppState extends State<PerguntaApp> {
-  var _perguntaSelecionada = 0;
+  int _perguntaSelecionada = 0;
+  final List<Map<String, Object>> _perguntas = const [
+    {
+      'text': 'Qual é a sua cor favorita?',
+      'reponse': ['black', 'red', 'yellow', 'green'],
+    },
+    {
+      'text': 'Qual é o seu animal favorito',
+      'reponse': ['dog', 'cat', 'bird', 'horse'],
+    },
+    {
+      'text': 'Qual é seu carro favorito',
+      'reponse': ['Dodge', 'Land Rover', 'Ferrari', 'Porshe'],
+    }
+  ];
   void _responder() {
     setState(() {
       _perguntaSelecionada++;
     });
   }
 
+  bool get hasSelectedQuestions {
+    return _perguntaSelecionada < _perguntas.length;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final perguntas = [
-      {
-        'text': 'Qual é a sua cor favorita?',
-        'reponse': ['black', 'red', 'yellow', 'green'],
-      },
-      {
-        'text': 'Qual é o seu animal favorito',
-        'reponse': ['dog', 'cat', 'bird', 'horse'],
-      },
-      {
-        'text': 'Qual é seu carro favorito',
-        'reponse': ['Dodge', 'Land Rover', 'Ferrari', 'Porshe'],
-      }
-    ];
-
-    List<String> responses = perguntas[_perguntaSelecionada].cast()['response'];
+    List<String> responses = <String>[];
+    hasSelectedQuestions
+        ? _perguntas[_perguntaSelecionada].cast()['response']
+        : null;
 
     // for (var textResp in responses) {
     //   widgets.add(Responses(textResp, _responder));
@@ -42,13 +48,19 @@ class _PerguntaAppState extends State<PerguntaApp> {
         appBar: AppBar(
           title: const Text('Perguntas'),
         ),
-        body: Column(
-          children: [
-            //Question(perguntas[_perguntaSelecionada]['text']), Mudou na versão 3 do flutter
-            Question(perguntas[_perguntaSelecionada]['text'].toString()),
-            ...responses.map((text) => Responses(text, _responder)).toList(),
-          ],
-        ),
+        body: hasSelectedQuestions
+            ? Column(
+                children: <Widget>[
+                  //Question(perguntas[_perguntaSelecionada]['text']), Mudou na versão 3 do flutter
+                  Question(_perguntas[_perguntaSelecionada]['text'].toString()),
+                  ...responses
+                      .map((text) => Responses(text, _responder))
+                      .toList(),
+                ],
+              )
+            : const Center(
+                child: Text('Parabains'),
+              ),
       ),
     );
   }
