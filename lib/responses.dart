@@ -11,7 +11,10 @@ class Responses extends StatelessWidget {
     return Container(
       width: double.infinity,
       child: ElevatedButton(
-        child: Text(text),
+        child: Text(
+          text,
+          style: const TextStyle(fontSize: 20),
+        ),
         onPressed: onSelection,
       ),
     );
