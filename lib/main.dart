@@ -34,14 +34,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> responses = <String>[];
-    hasSelectedQuestions
-        ? _perguntas[_perguntaSelecionada].cast()['response']
-        : null;
-
-    // for (var textResp in responses) {
-    //   widgets.add(Responses(textResp, _responder));
-    // }
+    List<String> responses = hasSelectedQuestions
+        ? _perguntas[_perguntaSelecionada].cast()['reponse']
+        : <String>[];
 
     return MaterialApp(
       home: Scaffold(
