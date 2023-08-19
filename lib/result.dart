@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
   final int point;
-  const Result({required this.point, Key? key}) : super(key: key);
+  final void Function() onRestartQuiz;
+
+  const Result({
+    required this.point,
+    required this.onRestartQuiz,
+    Key? key,
+  }) : super(key: key);
 
   String get resultText {
     if (point >= 30) {
@@ -16,12 +22,25 @@ class Result extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        resultText,
-        style: const TextStyle(fontSize: 28),
-        textAlign: TextAlign.center,
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Center(
+          child: Text(
+            resultText,
+            style: const TextStyle(fontSize: 28),
+            textAlign: TextAlign.center,
+          ),
+        ),
+        FlatButton(
+          onPressed: onRestartQuiz,
+          child: const Text(
+            'Tenta de novo ai',
+            style: TextStyle(fontSize: 18),
+          ),
+          textColor: Colors.blueAccent,
+        )
+      ],
     );
   }
 }

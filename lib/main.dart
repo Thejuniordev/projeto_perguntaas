@@ -45,7 +45,13 @@ class _PerguntaAppState extends State<PerguntaApp> {
         _totalPoints += point;
       });
     }
-    print('Pontuação: ${_totalPoints}');
+  }
+
+  void _restarQuiz() {
+    setState(() {
+      _perguntaSelecionada = 0;
+      _totalPoints = 0;
+    });
   }
 
   bool get hasSelectedQuestions {
@@ -64,9 +70,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
                 perguntas: _perguntas,
                 perguntaSelecionada: _perguntaSelecionada,
                 responder: _responder)
-            : Result(
-                point: _totalPoints,
-              ),
+            : Result(point: _totalPoints, onRestartQuiz: _restarQuiz),
       ),
     );
   }
