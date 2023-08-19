@@ -30,9 +30,9 @@ class _PerguntaAppState extends State<PerguntaApp> {
         body: Column(
           children: [
             Question(perguntas[_perguntaSelecionada]),
-            const Responses('Resposta 1'),
-            const Responses('Resposta 2'),
-            const Responses('Resposta 3'),
+            Responses('Resposta 1', _responder),
+            Responses('Resposta 2', _responder),
+            Responses('Resposta 3', _responder),
           ],
         ),
       ),
