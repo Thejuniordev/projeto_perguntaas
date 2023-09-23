@@ -32,14 +32,6 @@ class Result extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
         ),
-        FlatButton(
-          onPressed: onRestartQuiz,
-          child: const Text(
-            'Tenta de novo ai',
-            style: TextStyle(fontSize: 18),
-          ),
-          textColor: Colors.blueAccent,
-        )
       ],
     );
   }

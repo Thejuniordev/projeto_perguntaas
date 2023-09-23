@@ -10,7 +10,7 @@ class Responses extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
+        SizedBox(
           width: 300,
           child: ElevatedButton(
             child: Text(
@@ -22,8 +22,8 @@ class Responses extends StatelessWidget {
             ),
             onPressed: onSelection,
             style: ElevatedButton.styleFrom(
-                primary: const Color.fromARGB(255, 4, 23, 67),
-                onPrimary: const Color.fromARGB(255, 7, 90, 255),
+                foregroundColor: const Color.fromARGB(255, 7, 90, 255),
+                backgroundColor: const Color.fromARGB(255, 4, 23, 67),
                 elevation: 20, // Elevation
                 shadowColor: const Color.fromARGB(255, 54, 164, 255),
                 padding: const EdgeInsets.all(25)
